@@ -1,39 +1,71 @@
 package main
 
 import (
-	"fmt"
-	"os"
+	"flag"
+	"log"
+	"net/http"
+	"tadeobennett/celebrateease/helpers"
 	"tadeobennett/celebrateease/initializers"
-
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html/v2"
 )
 
-func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDatabase()
-	initializers.SyncDb()
+type application struct {
+	// celebrants *postgresql.CelebrantModel
+	// eventpages *postgresql.EventPageModel
+	// events     *postgresql.EventModel
+	// users      *postgresql.UserModel
+	errorLog *log.Logger
+	infoLog  *log.Logger
+	// session    *sessions.Session
 }
 
 func main() {
-	//load templates
-	// Initialize standard Go html template engine
-	//tells where to find all tmpl files
-	engine := html.New("./views", ".tmpl")
+	//create flags
+	addr := flag.String("addr", ":4000", "HTTP network address") //set a flag to use a custom port or port :4000 by default
+	// dsn := flag.String("dsn", "postgres://"+dbname+":"+password+"@"+host+"/"+user+"?sslmode=disable", "PostgreSQL DSN (Data Source Name)")
+	// secret := flag.String("secret", "8693b89c15217db6a4a90aa41cf0e6d5f31752aaf318b4e184f7c5a93a9a90c2", "Secret Key")
+	flag.Parse()
 
-	//setup app views engine
-	app := fiber.New(fiber.Config{
-		Views: engine,
-	})
+	// initialize all necessities
+	initializers.LoadEnvVariables()
+	db, err := initializers.ConnectToDatabase()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+	initializers.SyncDb()
 
-	//configure app files(css, js, images, etc...)
-	app.Static("/", "./public/assets/")
+	//create custome logs
+	infoLog, errorLog := helpers.CreateCustomLog()
 
-	//routes
-	Routes(app)
+	app := &application{
+		// celebrants: &postgresql.CelebrantModel{
+		// 	DB: db,
+		// },
+		// eventpages: &postgresql.EventPageModel{
+		// 	DB: db,
+		// },
+		// events: &postgresql.EventModel{
+		// 	DB: db,
+		// },
+		// users: &postgresql.UserModel{
+		// 	DB: db,
+		// },
+		errorLog: errorLog,
+		infoLog:  infoLog,
+		// session:  session,
+	}
 
-	//start app on port 3000
-	port := ":" +  os.Getenv("PORT")
-	app.Listen(port)
-	fmt.Println("Hello, World!")
+	app.routes()
+
+	// custom web http server
+	srv := &http.Server{
+		Addr: *addr,
+		Handler:  app.routes(), //return the multiplexer
+		ErrorLog: errorLog, // initialize the standard error log with my own errorlog
+	}
+
+	infoLog.Printf("Starting server on port %s", *addr)
+	srv.ListenAndServe()
+	// err = srv.ListenAndServeTLS("../../tls/cert.pem", "../../tls/key.pem") //use the certifate values
+	// srv.ErrorLog.Fatal(err)
 }

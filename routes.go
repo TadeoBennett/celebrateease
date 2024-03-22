@@ -1,17 +1,19 @@
 package main
 
 import (
-	"tadeobennett/celebrateease/controllers"
-
-	"github.com/gofiber/fiber/v2"
+	"net/http"
+	"github.com/bmizerany/pat"
+	// "github.com/justinas/alice"
 )
 
-func Routes(app *fiber.App) {
-	app.Get("/", controllers.PostsIndex)
+func (app *application) routes() http.Handler{
+	mux := pat.New()
+	mux.Get("/", http.HandlerFunc(app.GuestHome)) //show the home page with celebrants
+	mux.Get("/guest", http.HandlerFunc(app.GuestHome)) //show the home page with celebrants
 
-    // Custom 404 handler
-    app.Use(func(c *fiber.Ctx) error {
-        // Respond with a 404 status code
-        return c.Status(fiber.StatusNotFound).SendString("404 Not Found - Redirecting to home page")
-    })
+	//create a file server to serve out static content (css, js, sass, images, etc.)
+	fileServer := http.FileServer(http.Dir("../../ui/static/"))
+	mux.Get("/static/", http.StripPrefix("/static/", fileServer))
+
+	return mux
 }
