@@ -2,6 +2,7 @@ package initializers
 
 import (
 	"database/sql"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -23,12 +24,13 @@ func getDSNString() string {
 	password := os.Getenv("DB_PASSWORD")
 	user := os.Getenv("DB_USER")
 	// port, err := strconv.Atoi(strings.TrimSpace(os.Getenv("DB_PORT")))
-	port := os.Getenv("DB_PORT")
+	// port := os.Getenv("DB_PORT")
 	// if err != nil {
 	// 	log.Panic("Port is of the wrong type")
 	// }
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", host, user, password, dbname, port)
-	return dsn
+	dsn := flag.String("dsn", "postgres://"+user+":"+password+"@"+host+"/"+dbname+"?sslmode=disable", "PostgreSQL DSN (Data Source Name)")
+	// dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", host, user, password, dbname, port)
+	return *dsn
 }
 
 // connect to the postgres database

@@ -9,3 +9,5 @@ DROP ROLE IF EXISTS celebrateease_user;
 CREATE ROLE celebrateease_user LOGIN PASSWORD 'password';
 GRANT ALL PRIVILEGES ON DATABASE  celebrateease TO celebrateease_user;
 ALTER ROLE celebrateease_user SUPERUSER;
+
+
