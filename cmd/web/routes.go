@@ -13,11 +13,10 @@ func routes(app *Application) http.Handler {
 
 	//create a variable to hold my middleware chain in order
 	standardMiddleware := alice.New(
-		app.recoverPanicMiddleware,
 		app.logRequestMiddleware,
 		app.securityHeadersMiddleware,
+		app.recoverPanicMiddleware,
 	)
-
 	//loads and saves session data to and from the session cookie
 	dynamicMiddleware := alice.New(app.Session.Enable)
 	mux := pat.New()

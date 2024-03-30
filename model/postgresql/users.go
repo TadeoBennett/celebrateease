@@ -9,8 +9,8 @@ type UserModel struct {
 	DB *sql.DB
 }
 
-//returns all users from the database
-func (m *UserModel) GetUsersFromDB() ([]*model.User, error){
+// returns all users from the database
+func (m *UserModel) GetUsersFromDB() ([]*model.User, error) {
 	s := `
 	SELECT first_name, last_name from users;
 	`

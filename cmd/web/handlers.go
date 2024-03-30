@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"tadeobennett/celebrateease/controller"
 	"tadeobennett/celebrateease/model/postgresql"
-
+	// "tadeobennett/celebrateease/shared"
 	// "tadeobennett/celebrateease/model"
 	"tadeobennett/celebrateease/view"
 )
@@ -25,9 +25,10 @@ func (app *Application) GuestHome(w http.ResponseWriter, r *http.Request) {
 func (app *Application) GetAllUsers(w http.ResponseWriter, r *http.Request) {
 	// initialize view and model
 	userView := &view.UserView{
-		InfoLog:  app.InfoLog,
-		ErrorLog: app.ErrorLog,
-		
+		InfoLog:     app.InfoLog,
+		ErrorLog:    app.ErrorLog,
+		Session: app.Session,
+		ErrorHandler: app,
 	}
 
 	userModel := &postgresql.UserModel{

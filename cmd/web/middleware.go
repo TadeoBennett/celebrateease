@@ -37,7 +37,7 @@ func (app *Application) recoverPanicMiddleware(next http.Handler) http.Handler {
 		defer func() {
 			if err := recover(); err != nil { //if err is not nil
 				w.Header().Set("Connection", "Close")
-				app.serverError(w, fmt.Errorf("%s", err))
+				app.ServerError(w, fmt.Errorf("%s", err))
 			}
 
 		}() //this means that it will execute

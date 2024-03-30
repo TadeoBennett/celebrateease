@@ -7,6 +7,7 @@ import (
 
 	// "tadeobennett/celebrateease/model"
 	"tadeobennett/celebrateease/model/postgresql"
+	"tadeobennett/celebrateease/shared"
 	"tadeobennett/celebrateease/view"
 	"tadeobennett/celebrateease/view/templates"
 	// "github.com/golangcollege/sessions"
@@ -17,6 +18,7 @@ type UserController struct {
 	UserModel *postgresql.UserModel
 	UserView  *view.UserView
 	DB        *sql.DB
+	shared.ErrorHandler
 	// errorLog  *log.Logger
 	// infoLog   *log.Logger
 	// session   *sessions.Session
@@ -34,8 +36,8 @@ func (uc *UserController) RenderAllUsers(w http.ResponseWriter, r *http.Request)
 	allUsers, err := uc.UserModel.GetUsersFromDB()
 
 	if err != nil {
-		log.Println(err.Error())
-		// app.serverError(w, err)
+		log.Panic(err.Error())
+		uc.ServerError(w, err)
 		return
 	}
 
