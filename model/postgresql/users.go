@@ -24,22 +24,16 @@ func (m *UserModel) GetUsersFromDB() ([]*model.User, error) {
 
 	for rows.Next() {
 
-		u := &model.User{}
+		record := &model.User{}
 
-		err = rows.Scan(&u.FirstName, &u.LastName)
+		err = rows.Scan(&record.FirstName, &record.LastName)
 		if err != nil {
 			return nil, err
 		}
-
-		//Append to quotes
-		users = append(users, u)
+		users = append(users, record)
 	}
-
-	//Always check the rows.Err()
-	//instead of checking for errors and seeing if it is nil, we do it in one line
 	if err = rows.Err(); err != nil {
 		return nil, err
 	}
-
 	return users, nil
 }

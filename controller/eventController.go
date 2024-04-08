@@ -13,27 +13,19 @@ import (
 	// "github.com/golangcollege/sessions"
 )
 
-// UserController handles user-related operations
-type UserController struct {
-	UserModel *postgresql.UserModel
-	UserView  *view.UserView
+// EventController handles user-related operations
+type EventController struct {
+	EventModel *postgresql.EventModel
+	EventView  *view.EventView
 	DB        *sql.DB
 	shared.ErrorHandler
 	// errorLog  *log.Logger
 	// infoLog   *log.Logger
 	// session   *sessions.Session
 }
-
-func (uc *UserController) RenderGuestHomePage(w http.ResponseWriter, r *http.Request) {
+func (uc *EventController) RenderAllEvents(w http.ResponseWriter, r *http.Request) {
 	//use the model here to get any necessary data from the database
-
-	// Display the created user in another template
-	uc.UserView.RenderGuestIndexPage(w)
-}
-
-func (uc *UserController) RenderAllUsers(w http.ResponseWriter, r *http.Request) {
-	//use the model here to get any necessary data from the database
-	allUsers, err := uc.UserModel.GetUsersFromDB()
+	allEvents, err := uc.EventModel.GetEventsFromDB()
 
 	if err != nil {
 		log.Panic(err.Error())
@@ -42,10 +34,10 @@ func (uc *UserController) RenderAllUsers(w http.ResponseWriter, r *http.Request)
 	}
 
 	//return errors or proceed
-	data := &templates.UserTemplate{
-		Users: allUsers,
+	data := &templates.EventTemplate{
+		Events: allEvents,
 	}
 
 	// Display the created user in another template
-	uc.UserView.RenderAllUsersOnPage(w, data)
+	uc.EventView.RenderAllEventsOnPage(w, data)
 }

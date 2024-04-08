@@ -66,7 +66,7 @@ func ConnectToDatabase() (*sql.DB, error) {
 // creates tables in our database that matches the structs in models
 func SyncDb() {
 	DB.AutoMigrate(&model.Celebrant{})
-	DB.AutoMigrate(&model.EventPage{})
+	DB.AutoMigrate(&model.Page{})
 	DB.AutoMigrate(&model.Event{})
 	DB.AutoMigrate(&model.User{})
 }

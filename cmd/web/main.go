@@ -48,7 +48,7 @@ func main() {
 	// custom web http server
 	srv := &http.Server{
 		Addr:     *addr,
-		Handler:  routes(app), //return the multiplexer
+		Handler:  app.routes(), //return the multiplexer
 		ErrorLog: errorLog,    // initialize the standard error log with my own errorlog
 	}
 

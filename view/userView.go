@@ -21,6 +21,23 @@ type UserView struct {
 	shared.ErrorHandler
 }
 
+func (uv *UserView) RenderIndexPage(w http.ResponseWriter) {
+	//Display quotes using a template
+	tmpl, err := template.ParseFiles("../../views/index.tmpl")
+
+	if err != nil {
+		http.Error(w, "Failed to render template", http.StatusInternalServerError)
+		return
+	}
+	
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		uv.ErrorHandler.TemplateError(w, "Failed to show index page")
+		// http.Error(w, "Failed to show guest index page", http.StatusInternalServerError)
+		// uv.ErrorHandler.ServerError(w, err)
+		return
+	}
+}
 func (uv *UserView) RenderGuestIndexPage(w http.ResponseWriter) {
 	//Display quotes using a template
 	tmpl, err := template.ParseFiles("../../views/guestIndex.tmpl")
@@ -29,21 +46,22 @@ func (uv *UserView) RenderGuestIndexPage(w http.ResponseWriter) {
 		http.Error(w, "Failed to render template", http.StatusInternalServerError)
 		return
 	}
-
+	
 	err = tmpl.Execute(w, nil)
 	if err != nil {
-		http.Error(w, "Failed to show guest index page", http.StatusInternalServerError)
+		uv.ErrorHandler.TemplateError(w, "Failed to show guest index page")
+		// http.Error(w, "Failed to show guest index page", http.StatusInternalServerError)
+		// uv.ErrorHandler.ServerError(w, err)
 		return
 	}
 }
 
 func (uv *UserView) RenderAllUsersOnPage(w http.ResponseWriter, data *templates.UserTemplate) {
 
-	tmpl, err := template.ParseFiles("../../views/uses.tmpl")
+	tmpl, err := template.ParseFiles("../../views/users.tmpl")
 
 	if err != nil {
-		log.Println(err.Error())
-		uv.NotFound(w)
+		uv.NotFound(w, err)
 		return
 	}
 	
@@ -51,8 +69,7 @@ func (uv *UserView) RenderAllUsersOnPage(w http.ResponseWriter, data *templates.
 	err = tmpl.Execute(w, data)
 	
 	if err != nil {
-		log.Println(err.Error())
-		uv.NotFound(w)
+		uv.NotFound(w, err)
 		return
 	}
 }
