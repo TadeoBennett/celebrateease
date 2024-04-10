@@ -1,10 +1,13 @@
 package model
 
 import (
+	"errors"
 	"time"
 
 	"gorm.io/gorm"
 )
+//creating a new error for this model
+var ErrRecordNotFound = errors.New("models: no matching record found")
 
 type User struct {
 	gorm.Model

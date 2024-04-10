@@ -10,6 +10,8 @@ import (
 	"tadeobennett/celebrateease/shared"
 	"tadeobennett/celebrateease/view"
 	"tadeobennett/celebrateease/view/templates"
+
+	"github.com/golangcollege/sessions"
 	// "github.com/golangcollege/sessions"
 )
 
@@ -17,12 +19,14 @@ import (
 type EventController struct {
 	EventModel *postgresql.EventModel
 	EventView  *view.EventView
-	DB        *sql.DB
+	DB         *sql.DB
+	Session    *sessions.Session
 	shared.ErrorHandler
 	// errorLog  *log.Logger
 	// infoLog   *log.Logger
 	// session   *sessions.Session
 }
+
 func (uc *EventController) RenderAllEvents(w http.ResponseWriter, r *http.Request) {
 	//use the model here to get any necessary data from the database
 	allEvents, err := uc.EventModel.GetEventsFromDB()

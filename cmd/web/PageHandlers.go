@@ -24,6 +24,7 @@ func setupViewAndModelForPageController(app *Application) controller.PageControl
 	pc := &controller.PageController{
 		PageView:  pageView,
 		PageModel: pageModel,
+		Session: app.Session,
 	}
 	return *pc
 }

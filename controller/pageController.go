@@ -10,6 +10,8 @@ import (
 	"tadeobennett/celebrateease/shared"
 	"tadeobennett/celebrateease/view"
 	"tadeobennett/celebrateease/view/templates"
+
+	"github.com/golangcollege/sessions"
 	// "github.com/golangcollege/sessions"
 )
 
@@ -18,6 +20,7 @@ type PageController struct {
 	PageModel *postgresql.PageModel
 	PageView  *view.PageView
 	DB        *sql.DB
+	Session   *sessions.Session
 	shared.ErrorHandler
 	// errorLog  *log.Logger
 	// infoLog   *log.Logger

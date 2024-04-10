@@ -22,7 +22,6 @@ type CelebrantView struct {
 }
 
 func (uv *CelebrantView) RenderAllCelebrantsOnPage(w http.ResponseWriter, data *templates.CelebrantTemplate) {
-	w.Header().Set("Content-Type", "text/html")
 	tmpl, err := template.ParseFiles("../../views/guestIndex.tmpl")
 	if err != nil {
 		uv.NotFound(w, err)

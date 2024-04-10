@@ -24,6 +24,7 @@ func setupViewAndModelForEventController(app *Application) controller.EventContr
 	ec := &controller.EventController{
 		EventView:  eventView,
 		EventModel: eventModel,
+		Session: app.Session,
 	}
 	return *ec
 }

@@ -1,0 +1,11 @@
+changes all file extension in a directory from .html to .tmpl
+Get-ChildItem "A:\Others\Sotware Dev Projects\Go Projects\celebrateease\views" -Filter *.html | Rename-Item -NewName { $_.Name -replace '\.html$', '.tmpl' }
+
+
+gets the name of all files in a directory
+Get-ChildItem "A:\Others\Sotware Dev Projects\Go Projects\celebrateease\views" -File | Select-Object -ExpandProperty Name
+
+
+
+
+

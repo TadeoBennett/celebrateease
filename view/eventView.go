@@ -26,7 +26,7 @@ func (uv *EventView) RenderAllEventsOnPage(w http.ResponseWriter, data *template
 	tmpl, err := template.ParseFiles("../../views/events.tmpl")
 
 	if err != nil {
-		uv.NotFound(w, err)
+		uv.ErrorHandler.ServerError(w, err)
 		return
 	}
 	
@@ -34,7 +34,7 @@ func (uv *EventView) RenderAllEventsOnPage(w http.ResponseWriter, data *template
 	err = tmpl.Execute(w, data)
 	
 	if err != nil {
-		uv.NotFound(w, err)
+		uv.ErrorHandler.ServerError(w, err)
 		return
 	}
 }
