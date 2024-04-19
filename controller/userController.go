@@ -32,9 +32,12 @@ func (uc *UserController) RenderGuestHomePage(w http.ResponseWriter, r *http.Req
 	// Display the created user in another template
 	uc.UserView.RenderGuestHomePage(w)
 }
-func (uc *UserController) RenderIndexDashboardPage(w http.ResponseWriter, r *http.Request) {
-	//get some display data from the database using the model here
 
-	// Display the created user in another template
-	uc.UserView.RenderIndexDashboardPage(w)
-}
+
+
+
+//from post requests
+// func (uc *UserController) DisplayDashboardPage(w http.ResponseWriter, r *http.Request) {
+// 	//use the model here to get any necessary data from the database
+
+// }

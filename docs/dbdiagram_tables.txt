@@ -1,0 +1,52 @@
+Table Events{
+  id int [pk, increment]
+  event_name varchar(20) [not null]
+  event_picture varchar(35) [null]
+  event_description varchar(100) [not null]
+  created_at timestamp [default: `now()`]
+}
+
+Table Pages{
+  id int [pk, increment]
+  page_creator_id int [ref: > Users.id]
+  event_id int [ref: > Events.id]
+  headerimage varchar(50) [null]
+  content_image_1 varchar(50) [null]
+  voice_note varchar(50)
+  body_text_content varchar(256) [null]
+  view_code varchar(10) [null]
+  congrats_GIF boolean
+  love_GIF boolean
+  created_at timestamp [default: `now()`]
+}
+
+
+Table Users{
+  id int [pk, increment]
+  firstname varchar(20) [not null]
+  lastname varchar(20) [not null]
+  profile_picture varchar(20) [null]
+  phone_number varchar(20) [null]
+  date_of_birth date
+  email varchar(60) [not null]
+  password varchar(256)
+  created_at timestamp [default: `now()`]
+}
+
+Table Celebrants{
+  id int [pk, increment]
+  creator_id int [ref: - Users.id]
+  firstname varchar(20) [not null]
+  lastname varchar(20) [null]
+  email varchar(60) [null]
+  date_of_birth date [null]
+  status boolean
+  created_at timestamp [default: `now()`]
+}
+
+Table Settings{
+  id int [pk, increment]
+  user_id int [ref: - Users.id]
+  email_notifications boolean
+  dark_mode boolean
+}

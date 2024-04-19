@@ -32,12 +32,12 @@ func (uv *UserView) RenderGuestHomePage(w http.ResponseWriter) {
 		fmt.Println(tmpl.Name())
 	}
 }
-func (uv *UserView) RenderIndexDashboardPage(w http.ResponseWriter) {
+func (uv *UserView) RenderDashboardPage(w http.ResponseWriter, r * http.Request) {
 
 	templates := LoadViewsAndPartials(w, uv)
-	err := templates.ExecuteTemplate(w, "index.tmpl", nil) //execute base template
+	err := templates.ExecuteTemplate(w, "dashboard.tmpl", nil) //execute base template
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		uv.ErrorHandler.NotFound(w, err)
 	}
 	for _, tmpl := range templates.Templates() { //show the parsed files in log
 		fmt.Println(tmpl.Name())

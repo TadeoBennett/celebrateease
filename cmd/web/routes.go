@@ -16,8 +16,8 @@ import (
 func routes(app *Application) http.Handler {
 	//create a variable to hold my middleware chain in order
 	standardMiddleware := alice.New(
-		app.logRequestMiddleware,
 		app.securityHeadersMiddleware,
+		app.logRequestMiddleware,
 		app.recoverPanicMiddleware,
 	)
 	//loads and saves session data to and from the session cookie
@@ -58,9 +58,18 @@ func routes(app *Application) http.Handler {
 	// Other Custom System Routes
 	// mux.Get("/user/:userid/celebrants", dynamicMiddleware.ThenFunc(app.GetCelebrantsForLoggedInUser)) // Get the celebrants for the logged in user
 
-	//for the loading of the default pages
-	mux.Get("/", dynamicMiddleware.ThenFunc(app.GuestHome))
-	mux.Get("/dashboard", dynamicMiddleware.ThenFunc(app.IndexHome))
+	// for the loading of the default pages
+	mux.Get("/login", dynamicMiddleware.ThenFunc(app.DisplayLoginPage))
+	// mux.Post("/login", dynamicMiddleware.ThenFunc(app.LoginUser))
+	mux.Get("/dashboard", dynamicMiddleware.ThenFunc(app.DisplayLoginPage))
+	mux.Get("/celebrants", dynamicMiddleware.ThenFunc(app.DisplayLoginPage))
+	mux.Get("/events", dynamicMiddleware.ThenFunc(app.DisplayLoginPage))
+	mux.Get("/pages", dynamicMiddleware.ThenFunc(app.DisplayLoginPage))
+
+
+
+	// mux.Get("/", dynamicMiddleware.ThenFunc(app.GuestHome))
+	// mux.Get("/dashboard", dynamicMiddleware.ThenFunc(app.IndexHome))
 
 	// Parse all template files using ParseGlob
 	mytmpls, err := template.ParseGlob("../../views/**/*.tmpl")
@@ -72,7 +81,6 @@ func routes(app *Application) http.Handler {
 	templates := make(map[string]*template.Template)
 	templateFiles := []string{
 		"auth-confirm.tmpl",
-		"auth-login-half.tmpl",
 		"auth-login.tmpl",
 		"auth-register.tmpl",
 		"auth-resetpw.tmpl",
@@ -127,6 +135,7 @@ func routes(app *Application) http.Handler {
 		"ui-tabs-accordion.tmpl",
 		"ui-typograpy.tmpl",
 		"widgets.tmpl",
+		"dashboard-login.tmpl",
 	}
 
 	for _, filename := range templateFiles {

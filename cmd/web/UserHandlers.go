@@ -10,12 +10,7 @@ func (app *Application) GuestHome(w http.ResponseWriter, r *http.Request) {
 	//calls the user controller to render the home page
 	uc.RenderGuestHomePage(w, r)
 }
-func (app *Application) IndexHome(w http.ResponseWriter, r *http.Request) {
-	//setup the controller with the view and model
-	uc := setupViewAndModelForUserController(app)
-	//calls the user controller to render the home page
-	uc.RenderIndexDashboardPage(w, r)
-}
+
 
 // func (app *Application) GetAllUsers(w http.ResponseWriter, r *http.Request) {
 // 	//setup the controller with the view and model
@@ -27,3 +22,23 @@ func (app *Application) IndexHome(w http.ResponseWriter, r *http.Request) {
 // 	uc := setupViewAndModelForUserController(app)
 // 	uc.RenderUserByID(w, r)
 // }
+
+
+
+
+
+
+
+
+//post Requests
+func (app *Application) LoginUser(w http.ResponseWriter, r *http.Request) {
+	//setup the controller with the view and model
+
+
+	uc := setupViewAndModelForUserController(app)
+
+
+
+	//calls the user controller to render the dashboard page
+	uc.UserView.RenderDashboardPage(w, r)
+}

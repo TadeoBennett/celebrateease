@@ -1,0 +1,53 @@
+{{template "header.tmpl"}}
+
+<body class="dark ">
+    <div class="wrapper vh-100">
+        <div class="row align-items-center h-100">
+            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" method="post" action="/login">
+                <img src="" alt="">
+                <h1 class="h2 mb-3">Sign in</h1>
+                <div class="form-group">
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" id="inputEmail" class="form-control form-control-lg" placeholder="Email address"
+                        required="" autofocus="" name="email">
+                    {{ with .ErrorsFromForm.email }}
+                    <div class="invalid-feedback d-block">
+                        {{.}}
+                    </div>
+                    {{end}}
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control form-control-lg"
+                        placeholder="Password" required="" name="password">
+                    {{ with .ErrorsFromForm.password }}
+                    <div class="invalid-feedback d-block">
+                        {{.}}
+                    </div>
+                    {{end}}
+
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
+                <p class="mt-5 mb-3 text-muted">©2024 CelebrateEase </p>
+                <p class="text-muted">Made by Tadeo Bennett</p>
+            </form>
+        </div>
+    </div>
+    {{template "scripts.tmpl"}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-56159088-1');
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

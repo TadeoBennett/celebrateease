@@ -29,3 +29,4 @@ func LoadViewsAndPartials(w http.ResponseWriter, uv *UserView) *template.Templat
 	}
 	return templates
 }
+
