@@ -1,0 +1,434 @@
+{{template "test_header.tmpl"}}
+
+<body class="vertical  dark  ">
+  <div class="wrapper">
+    {{template "test_nav.tmpl"}}
+    {{template "test_aside.tmpl"}}
+    <main role="main" class="main-content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="d-flex align-items-center mb-2">
+              <h1 class="page-title mb-0" style="display: inline; margin-right: 20px;">Event Pages (Graduation)</h1>
+            </div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb bg-light">
+                <li class="breadcrumb-item "><a href="/">Your Celebrants</a></li>
+                <li class="breadcrumb-item active text-muted" aria-current="page"><a
+                    href="/userid/celebrantid">Celebrant Info(1)</a></li>
+                <li class="breadcrumb-item active text-muted" aria-current="page"><a href="/userid/eventid">Event Name
+                    (2)</a></li>
+                <li class="breadcrumb-item active text-muted" aria-current="page">Pages</li>
+              </ol>
+            </nav>
+          </div> <!-- /.col-12 -->
+        </div> <!-- .row -->
+        <h5 class="h5 mb-1">Event Name: <span class="text-muted">Graduation</span> </h5>
+        <h5 class="h5 mb-1">Celebrant Name: <span class="text-muted">John Doe</span></h5>
+        <ul class="nav nav-pills justify-content-start">
+          <li class="nav-item">
+            <a class="nav-link active bg-transparent pr-2 pl-0 text-primary" href="#">All <span
+                class="badge badge-pill bg-primary text-white ml-2">164</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted px-2" href="#">Disabled <span
+                class="badge badge-pill bg-white border text-muted ml-2">64</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted px-2" href="#">Enabled <span
+                class="badge badge-pill bg-white border text-muted ml-2">48</span></a>
+          </li>
+        </ul>
+        <div class="row">
+          <!-- Striped rows -->
+          <div class="col-md-12 mt-2">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="toolbar row mb-3">
+                  <div class="col">
+                    <form class="form-inline">
+                      <div class="form-row">
+                        <!-- <div class="form-group col-auto">
+                          <label for="search" class="sr-only">Search</label>
+                          <input type="text" class="form-control" id="search" value="" placeholder="Search">
+                        </div> -->
+                        <div class="form-group col-auto">
+                          <!-- <label for="">Status</label> -->
+                          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Seeing </label>
+                          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option selected="1">All</option>
+                            <option value="2">Enabled</option>
+                            <option value="3">Disabled</option>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col ml-auto">
+                    <div class="dropdown float-right">
+                      <button class="btn btn-primary float-right ml-3" type="button"><i class="fe fe-10 fe-plus"></i>
+                        Add New Page</button>
+                      <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Action </button>
+                        <div class="dropdown-menu" aria-labelledby="actionMenuButton">
+                          <a class="dropdown-item" href="#">Delete</a>
+                        </div> -->
+                      <button class="btn btn-danger" type="button" id="actionMenuButton"><i
+                          class="fe fe-10 fe-trash-2"></i> Delete </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- table -->
+                <table class="table table-bordered">
+                  <thead>
+                    <tr role="row">
+                      <th colspan="1"></th>
+                      <th colspan="4">Page <i class="fe fe-16 fe-file-text"></i></th>
+                      <th colspan="1">Sharing <i class="fe fe-16 fe-share-2"></i></th>
+                      <th colspan="2">Actions <i class="fe fe-16 fe-chevrons-right"></i></th>
+                    </tr>
+                    <tr role="row">
+                      <th>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="all">
+                          <label class="custom-control-label" for="all"></label>
+                        </div>
+                      </th>
+                      <th>ID</th>
+                      <th>Title</th>
+                      <th><i class="fe fe-16 fe-calendar"></i> Date Created</th>
+                      <th><i class="fe fe-16 fe-code"></i> Code</th>
+                      <th><i class="fe fe-16 fe-share-2"></i> Sharing Options</th>
+                      <th>Status</th>
+                      <th>Other</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1">
+                          <label class="custom-control-label" for="customCheck1"></label>
+                        </div>
+                      </td>
+                      <td>45</td>
+                      <td class="truncate">Happy 42nd Birthday Mom!</td>
+                      <td>2019-09-11 10:22:04</td>
+                      <td>%674h*L</td>
+                      <td>
+                        <a href="#">
+                          <img src="/static/assets/images/share_icon.png" width="25" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/facebook_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/whatsapp_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                      </td>
+                      <td>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                          <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                      </td>
+                      <td class=""><button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" href="#">Edit</a>
+                          <a class="dropdown-item" href="#">Delete</a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck2">
+                          <label class="custom-control-label" for="customCheck2"></label>
+                        </div>
+                      </td>
+                      <td>45</td>
+                      <td class="truncate">Happy 42nd Birthday Mom!</td>
+                      <td>2019-09-11 10:22:04</td>
+                      <td>%674h*L</td>
+                      <td>
+                        <a href="#">
+                          <img src="/static/assets/images/share_icon.png" width="25" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/facebook_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/whatsapp_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                      </td>
+                      <td>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                          <label class="custom-control-label" for="customSwitch2"></label>
+                        </div>
+                      </td>
+                      <td class=""><button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" href="#">Edit</a>
+                          <a class="dropdown-item" href="#">Delete</a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck3">
+                          <label class="custom-control-label" for="customCheck3"></label>
+                        </div>
+                      </td>
+                      <td>45</td>
+                      <td class="truncate">Happy 42nd Birthday Mom!</td>
+                      <td>2019-09-11 10:22:04</td>
+                      <td>%674h*L</td>
+                      <td>
+                        <a href="#">
+                          <img src="/static/assets/images/share_icon.png" width="25" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/facebook_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/whatsapp_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                      </td>
+                      <td>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                          <label class="custom-control-label" for="customSwitch3"></label>
+                        </div>
+                      </td>
+                      <td class=""><button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" href="#">Edit</a>
+                          <a class="dropdown-item" href="#">Delete</a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck4">
+                          <label class="custom-control-label" for="customCheck4"></label>
+                        </div>
+                      </td>
+                      <td>45</td>
+                      <td class="truncate">Happy 42nd Birthday Mom!</td>
+                      <td>2019-09-11 10:22:04</td>
+                      <td>%674h*L</td>
+                      <td>
+                        <a href="#">
+                          <img src="/static/assets/images/share_icon.png" width="25" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/facebook_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                        <a href="#">
+                          <img src="/static/assets/images/whatsapp_icon.png" width="20" alt="" class="mx-1">
+                        </a>
+                      </td>
+                      <td>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                          <label class="custom-control-label" for="customSwitch4"></label>
+                        </div>
+                      </td>
+                      <td class=""><button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" href="#">Edit</a>
+                          <a class="dropdown-item" href="#">Delete</a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- <nav aria-label="Table Paging" class="mb-0 text-muted">
+                  <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav> -->
+              </div>
+            </div>
+          </div> <!-- simple table -->
+        </div> <!-- test table section -->
+
+      </div> <!-- .container-fluid -->
+      <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="list-group list-group-flush my-n3">
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-box fe-24"></span>
+                    </div>
+                    <div class="col">
+                      <small><strong>Package has uploaded successfull</strong></small>
+                      <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                      <small class="badge badge-pill badge-light text-muted">1m ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-download fe-24"></span>
+                    </div>
+                    <div class="col">
+                      <small><strong>Widgets are updated successfull</strong></small>
+                      <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
+                      <small class="badge badge-pill badge-light text-muted">2m ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-inbox fe-24"></span>
+                    </div>
+                    <div class="col">
+                      <small><strong>Notifications have been sent</strong></small>
+                      <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
+                      <small class="badge badge-pill badge-light text-muted">30m ago</small>
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+                <div class="list-group-item bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <span class="fe fe-link fe-24"></span>
+                    </div>
+                    <div class="col">
+                      <small><strong>Link was attached to menu</strong></small>
+                      <div class="my-0 text-muted small">New layout has been attached to the menu</div>
+                      <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                    </div>
+                  </div>
+                </div> <!-- / .row -->
+              </div> <!-- / .list-group -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body px-5">
+              <div class="row align-items-center">
+                <div class="col-6 text-center">
+                  <div class="squircle bg-success justify-content-center">
+                    <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Control area</p>
+                </div>
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Activity</p>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Droplet</p>
+                </div>
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Upload</p>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Users</p>
+                </div>
+                <div class="col-6 text-center">
+                  <div class="squircle bg-primary justify-content-center">
+                    <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                  </div>
+                  <p>Settings</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main> <!-- main -->
+  </div> <!-- .wrapper -->
+  {{template "scripts.tmpl"}}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-56159088-1');
+  </script>
+
+
+  <script>
+    // selects all checkboxes on left-most column
+    document.addEventListener("DOMContentLoaded", function () {
+      var allCheckbox = document.getElementById("all");
+      var otherCheckboxes = document.querySelectorAll('.custom-checkbox .custom-control-input');
+
+      allCheckbox.addEventListener("click", function () {
+        otherCheckboxes.forEach(function (checkbox) {
+          checkbox.checked = allCheckbox.checked;
+          checkbox.dispatchEvent(new Event('change')); // Trigger change event to update Bootstrap's custom checkbox appearance
+        });
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

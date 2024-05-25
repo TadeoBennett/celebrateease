@@ -1,13 +1,10 @@
-package model
+package models
 
 import (
-	"errors"
 	"time"
 
 	"gorm.io/gorm"
 )
-//creating a new error for this model
-var ErrRecordNotFound = errors.New("models: no matching record found")
 
 type User struct {
 	gorm.Model
@@ -19,7 +16,7 @@ type User struct {
 	DateOfBirth    time.Time //can be null
 	Email          string    `gorm:"size:60"`  //optional field, allows null value
 	Password       string    `gorm:"size:256"` //optional field, allows null value
-	Status         bool      `gorm:"default:1"`
+	Activated         bool      `gorm:"default:true"`
 	CreatedAt      time.Time `gorm:"default:current_timestamp"` // Redefine CreatedAt
 	UpdatedAt      time.Time `gorm:"default:current_timestamp"` // Redefine UpdatedAt
 }

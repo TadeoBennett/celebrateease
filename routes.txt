@@ -1,0 +1,57 @@
+METHOD  -- ROUTE                              --                HANDLER                         
+GET        /                                                    home                             -- home page         
+GET        /user/signup                                         signupForm                       -- form to signup/insert a new user
+POST       /user/signup                                         signup                           -- signup/insert a new user
+GET        /user/login                                          loginForm                        -- form to login a user
+POST       /user/login                                          login                            -- login a user
+POST       /user/logout                                         logout                           -- logout a user
+GET        /user/:id/settings/                                  settingsForm                     -- gets a user's settings
+POST       /user/:id/settings/                                  updateSettings                   -- add/updates a user's settings
+
+GET        /events                                              getAllEvents                     -- get all system events
+GET        /user/:id/celebrant/                                 getUserCelebrants                -- get all celebrants
+GET        /user/:id/celebrant/:id/event/                       getUserCelebrantEvents           -- get all events for a celebrant
+GET        /user/:id/celebrant/:id/event/:id/page               getUserCelebrantEventPages       -- get all pages for an event, for a celebrant, for a user
+GET        /user/:id/page/                                      getUserPages                     -- get all created pages for a user
+                 
+GET        /user/:id/celebrant/:id                              getUserCelebrant                 -- get celebrant
+GET        /user/:id/celebrant/add                              createCelebrantForm              -- form to add a new celebrant
+POST       /user/:id/celebrant/add                              createCelebrant                  -- adds a new celebrant
+GET        /user/:id/celebrant/:id/edit                         editCelebrantForm                -- form to edit a celebrant
+POST       /user/:id/celebrant/:id/edit                         editCelebrant                    -- edits a celebrant
+POST       /user/:id/celebrant/:id/delete                       deleteCelebrant                  -- deletes a celebrant
+
+
+GET         /user/:id/celebrant/:id/event/:id                   getUserCelebrantEvent           -- get an event
+GET         /user/:id/celebrant/:id/event/add                   createCelebrantEventForm        -- form to add a new event for a celebrant
+POST        /user/:id/celebrant/:id/event/add                   createCelebrantEvent            -- adds a new event for a celebrant
+GET         /user/:id/celebrant/:id/event/:id/edit              editCelebrantEventForm          -- form to edit a new event for a celebrant
+POST        /user/:id/celebrant/:id/event/:id/edit              editCelebrantEvent              -- edits a new event for a celebrant
+POST        /user/:id/celebrant/:id/event/:id/delete            deleteCelebrantEvent            -- deletes an event
+
+
+GET         /user/:id/celebrant/:id/event/:id/page/:id          getUserCelebrantEventPage       -- get a page
+GET         /user/:id/celebrant/:id/event/:id/page/add          createCelebrantEventPageForm    -- form to add a new page for an event
+POST        /user/:id/celebrant/:id/event/:id/page/add          createCelebrantEventPage        -- adds a new page for an event
+GET         /user/:id/celebrant/:id/event/:id/page/:id/edit     editCelebrantEventPageForm      -- form to edit a new event for a celebrant
+POST        /user/:id/celebrant/:id/event/:id/page/:id/edit     editCelebrantEventPage          -- edits a page for an event
+POST        /user/:id/celebrant/:id/event/:id/page/:id/delete   deleteCelebrantEventPage        -- deletes a page for an event
+
+
+//basic actions
+POST        /user/:id/celebrant/:id/event/:id/page/:id/code/edit  -- edits the code
+POST        /user/:id/celebrant/:id/event/:id/page/:id/status/0   -- toggle the enabled page button
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

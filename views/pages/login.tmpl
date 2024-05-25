@@ -1,0 +1,60 @@
+{{template "test_header.tmpl"}}
+  <body class="dark ">
+    <div class="wrapper vh-100">
+      <div class="row align-items-center h-100">
+        <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" action="/login" method="post">
+          <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+          <div class="errorForLogin">
+            {{with .ErrorsFromForm.default}}
+              <span class="error-toast text-center mt-2 mb-2">
+                Incorrect Password or email
+              </span>
+            {{end}}
+          </div>
+          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
+            <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
+              <g>
+                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
+                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
+                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
+              </g>
+            </svg>
+          </a>
+          <div class="notifier">
+            {{with .Flash}}
+              <div class="text-center p-2 bg-light">
+                  <span>{{.}}</span>
+              </div>
+            {{end}}
+          </div>
+          <h1 class="h6 mb-3">Sign in</h1>
+          <div class="form-group">
+            <label for="email" class="sr-only">Email address</label>
+            <input type="email" id="email" name="email" value="{{ .FormData.Get "email" }}" class="form-control form-control-lg" placeholder="Email address" required="" autofocus="">
+          </div>
+          <div class="form-group">
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" value="{{ .FormData.Get "password" }}" class="form-control form-control-lg" placeholder="Password" required="">
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
+          <p class="mt-5 mb-3 text-muted">© 2024</p>
+        </form>
+      </div>
+    </div>
+    {{template "scripts.tmpl"}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
+    </script>
+  </body>
+</html>
+</body>
+</html>

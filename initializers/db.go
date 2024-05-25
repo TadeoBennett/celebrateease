@@ -8,7 +8,7 @@ import (
 	"os"
 	// "strconv"
 	// "strings"
-	"tadeobennett/celebrateease/model"
+	"tadeobennett/celebrateease/pkg/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -65,8 +65,8 @@ func ConnectToDatabase() (*sql.DB, error) {
 
 // creates tables in our database that matches the structs in models
 func SyncDb() {
-	DB.AutoMigrate(&model.Celebrant{})
-	DB.AutoMigrate(&model.Page{})
-	DB.AutoMigrate(&model.Event{})
-	DB.AutoMigrate(&model.User{})
+	DB.AutoMigrate(&models.Celebrant{})
+	DB.AutoMigrate(&models.Page{})
+	DB.AutoMigrate(&models.Event{})
+	DB.AutoMigrate(&models.User{})
 }

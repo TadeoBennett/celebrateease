@@ -1,4 +1,4 @@
-package model
+package models
 
 import (
 	"time"
@@ -20,6 +20,7 @@ type Page struct {
 	CongratsGIF     bool      `gorm:"default:0"`
 	LoveGIF         bool      `gorm:"default:0"`
 	Status          bool      `gorm:"default:0"`
+	Accessed        uint      `gorm:"default:0"`
 	CreatedAt       time.Time `gorm:"default:current_timestamp"` // Redefine CreatedAt
 	UpdatedAt       time.Time `gorm:"default:current_timestamp"` // Redefine UpdatedAt
 }
