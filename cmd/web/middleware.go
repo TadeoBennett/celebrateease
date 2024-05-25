@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"time"
+
+	"github.com/justinas/nosurf"
 )
 
 func (app *Application) securityHeadersMiddleware(next http.Handler) http.Handler {
@@ -43,4 +45,26 @@ func (app *Application) recoverPanicMiddleware(next http.Handler) http.Handler {
 		}() //this means that it will execute
 		next.ServeHTTP(w, r)
 	})
+}
+
+func (app *Application) requireAuthentication(next http.Handler) http.Handler {
+	// note: middleware has to return a handler
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !app.IsAuthenticated(r) { //if not authenticated then redirect to login
+			http.Redirect(w, r, "/login", http.StatusSeeOther)
+			return
+		}
+		w.Header().Add("Cache-Control", "no-store")
+		next.ServeHTTP(w, r)
+	})
+}
+
+func noSurf(next http.Handler) http.Handler {
+	csrfHandler := nosurf.New(next)
+	csrfHandler.SetBaseCookie(http.Cookie{
+		HttpOnly: true,
+		Path:     "/",
+		Secure:   true,
+	})
+	return csrfHandler
 }

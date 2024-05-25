@@ -7,9 +7,6 @@ import (
 	"os"
 	"runtime/debug" //able to see stacktrace when there are errors
 	"strconv"
-	"tadeobennett/celebrateease/controller"
-	"tadeobennett/celebrateease/model/postgresql"
-	"tadeobennett/celebrateease/view"
 )
 
 func CreateCustomLog() (infoLog *log.Logger, errorLog *log.Logger) {
@@ -51,21 +48,6 @@ func (app *Application) TemplateError(w http.ResponseWriter, err string) {
 	http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 }
 
-func setupViewAndModelForUserController(app *Application) controller.UserController {
-	// initialize view and model
-	userView := &view.UserView{
-		InfoLog:      app.InfoLog,
-		ErrorLog:     app.ErrorLog,
-		Session:      app.Session,
-		ErrorHandler: app,
-	}
-	userModel := &postgresql.UserModel{
-		DB: app.DB,
-	}
-	uc := &controller.UserController{
-		UserView:  userView,
-		UserModel: userModel,
-		Session:   app.Session,
-	}
-	return *uc
+func (app *Application) IsAuthenticated(r *http.Request) bool {
+	return app.Session.Exists(r, "authenticatedUserId")
 }

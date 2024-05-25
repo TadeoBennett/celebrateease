@@ -7,6 +7,7 @@ require (
 	github.com/golangcollege/sessions v1.2.0
 	github.com/joho/godotenv v1.5.1
 	github.com/justinas/alice v1.2.0
+	github.com/justinas/nosurf v1.1.1
 	gorm.io/driver/postgres v1.5.6
 	gorm.io/gorm v1.25.7
 )

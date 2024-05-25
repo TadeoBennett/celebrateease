@@ -1,0 +1,12 @@
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    margin: 0 5px; /* Adjust spacing if needed */
+}
+
+td.truncate {
+    max-width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
